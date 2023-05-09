@@ -18,11 +18,12 @@ const Main = () => {
             <div>
                 <Container>
                     <Row>
-                        <Col lg={6}>
+                        <Col lg={9}>
                             <ChefNav></ChefNav>
                         </Col>
-                        <Col lg={6}>sm=4</Col>
+                        <Col lg={3}>sm=4</Col>
                     </Row>
+                   
                 </Container>
             </div>
             <Footer></Footer>
