@@ -7,13 +7,13 @@ const ChefNav = () => {
     useEffect(()=>{
         fetch('http://localhost:5000/chefs')
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => setChefs(data))
         .catch(error=>console.error(error))
     },[])
-    
+
     return (
         <div>
-            <h2>Chef nav</h2>
+            <h2>All Chefs</h2>
         </div>
     );
 };
