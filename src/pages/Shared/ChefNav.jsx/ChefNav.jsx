@@ -14,21 +14,25 @@ const ChefNav = () => {
 
     return (
         <div>
-            <h2>All Chefs</h2>
+            <h2 className='ms-5 mb-4 text-success'>All CHEFS</h2>
+            <div>
             {
                 chefs.map(chef =>
-                    <Card key={chef.id} style={{ width: '18rem' }}>
+                    <Card className='mb-4' key={chef.id} style={{ width: '18rem' }}>
       <Card.Img variant="top" src={chef.chefPicture} />
       <Card.Body>
         <Card.Title>Name:{chef.chefName}</Card.Title>
         <Card.Title>Experience:{chef.yearsOfExperience}</Card.Title>
         <Card.Title>Number of Recipes:{chef.numRecipes}</Card.Title>
         <Card.Title>Likes:{chef.likes}</Card.Title>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">View Recipes</Button>
       </Card.Body>
     </Card>
-                    )
+       )
             }
+
+            </div>
+            
         </div>
     );
 };
