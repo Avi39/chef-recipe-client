@@ -6,6 +6,9 @@ import Home from '../pages/Home/Home/Home';
 import { createBrowserRouter } from 'react-router-dom';
 import RecipiesLayout from '../layouts/RecipiesLayout';
 import Reciepes from '../pages/Recieps/Reciepes';
+import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
+import LoginLayout from '../layouts/LoginLayout';
 
 const router = createBrowserRouter([
     {
@@ -16,6 +19,7 @@ const router = createBrowserRouter([
             path:'/',
             element:<Home></Home>
         }
+        
       ]
     },
     {
@@ -26,8 +30,22 @@ const router = createBrowserRouter([
                 path:'/recipes/:id',
                 element:<Reciepes></Reciepes>,
                 loader:({params}) =>fetch(`http://localhost:5000/chefs/${params.id}`)
-            }
+            } 
         ]
+    },
+    {
+      path:'/',
+      element:<LoginLayout></LoginLayout>,
+      children:[
+        {
+          path:'/',
+          element:<Main></Main>
+        },  
+        {
+          path:'/login',
+          element:<Login></Login>
+        }
+      ]
     }
   ]);
 
