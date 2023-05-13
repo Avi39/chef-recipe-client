@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUser} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleRegister = event =>{
         event.preventDefault();
@@ -26,6 +26,16 @@ const Register = () => {
         .catch(error =>{
             console.log(error);
         })
+
+        updateUser(photo,name)
+        .then(result =>{
+            const updateUser = result.user;
+            console.log(updateUser);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+
     }
     return (
         <Container className='w-25 mx-auto mt-5 mb-5'>

@@ -4,9 +4,15 @@ import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
+
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext)
+    const auth = getAuth(app);
+    console.log(app)
+const provider = new GoogleAuthProvider();
+    const {signIn,googleSingIn} = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -24,6 +30,17 @@ const Login = () => {
             const loggedUser = result.user;
             console.log(loggedUser);
             navigate(from,{replace: true});
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
+    const handleGoogleSignIn = () =>{
+        signInWithPopup(auth,provider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+            // navigate(from,{replace: true});
         })
         .catch(error =>{
             console.log(error);
@@ -60,6 +77,7 @@ const Login = () => {
                         
                     </Form.Text>
                 </Form>
+                <button onSubmit={handleGoogleSignIn}>login with google</button>
         </Container>
     );
 };
