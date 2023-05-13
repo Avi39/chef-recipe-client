@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
+import { FaBeer,FaGoogle } from 'react-icons/fa';
 
 
 const Login = () => {
@@ -40,7 +41,7 @@ const provider = new GoogleAuthProvider();
         .then(result =>{
             const user = result.user;
             console.log(user);
-            // navigate(from,{replace: true});
+             navigate(from,{replace: true});
         })
         .catch(error =>{
             console.log(error);
@@ -77,7 +78,7 @@ const provider = new GoogleAuthProvider();
                         
                     </Form.Text>
                 </Form>
-                <button onSubmit={handleGoogleSignIn}>login with google</button>
+                <button className='p-2 mt-2 rounded bg-warning' onClick={handleGoogleSignIn}><FaGoogle></FaGoogle> Login with google</button>
         </Container>
     );
 };

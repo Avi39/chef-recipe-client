@@ -29,15 +29,15 @@ const Header = () => {
           </Nav>
           <Nav>
             {
-              user && <Nav>          
-              {user.displayName}
-              </Nav>
+              user && <img className='mx-5 w-25 rounded-circle' src={user.photoURL} alt="" />   
+              
+              
             }
              
             
               
                 { user ? 
-                 <Button onClick={handleLogout} variant="secondary">LogOut</Button> :
+                 <Button className='w-50 h-25 mt-3' onClick={handleLogout} variant="secondary">LogOut</Button> :
                  <Link to='/login'>
                  <Button variant="secondary">Login</Button>
                  </Link>
