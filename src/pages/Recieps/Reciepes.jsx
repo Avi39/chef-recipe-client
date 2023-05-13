@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import ChefNav from '../Shared/ChefNav.jsx/ChefNav';
 import { Button, Card, Table } from 'react-bootstrap';
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 const Reciepes = () => {
+    const [rating, setRating] = useState(0)
     const recipes = useLoaderData();
     const { id, chefPicture, chefName, yearsOfExperience, numRecipes, likes, recipeNameOne, cookingMethodOne, ratingOne, ingredientsOne, bio,recipeNameTwo,cookingMethodTwo,ratingTwo,ingredientsTwo,recipeNameThree,ratingThree,ingredientsThree,cookingMethodThree } = recipes;
     console.log(recipes);
@@ -32,7 +35,10 @@ const Reciepes = () => {
                                 <Card.Body>
                                     <Card.Title> <span className='text-danger'>Recipe Name:</span>  {recipeNameOne}</Card.Title>
                                     <br />
-                                    <Card.Title>Rating: {ratingOne}</Card.Title>
+                                    <Card.Title>Rating: {ratingOne}
+                                    <Rating style={{ maxWidth: 100 }} value={Math.round(Rating?.ratingTwo)} readOnly />
+                                    </Card.Title>
+                                    
                                     <br />
                                     <Card.Text>
                                        <span className='fw-bold'>Cooking Method:</span> {cookingMethodOne}
@@ -48,7 +54,7 @@ const Reciepes = () => {
                                 <Card.Body>
                                     <Card.Title> <span className='text-danger'>Recipe Name:</span>  {recipeNameTwo}</Card.Title>
                                     <br />
-                                    <Card.Title>Rating: {ratingTwo}</Card.Title>
+                                    <Card.Title>Rating: {ratingTwo} <Rating style={{ maxWidth: 100 }} value={Math.round(Rating?.ratingTwo)} readOnly /></Card.Title>
                                     <br />
                                     <Card.Text>
                                        <span className='fw-bold'>Cooking Method:</span> {cookingMethodTwo}
@@ -64,7 +70,9 @@ const Reciepes = () => {
                                 <Card.Body>
                                     <Card.Title> <span className='text-danger'>Recipe Name:</span>  {recipeNameThree}</Card.Title>
                                     <br />
-                                    <Card.Title>Rating: {ratingTwo}</Card.Title>
+                                    <Card.Title>Rating: {ratingTwo}
+                                    <Rating style={{ maxWidth: 100 }} value={Math.round(Rating?.ratingTwo)} readOnly />
+                                    </Card.Title>
                                     <br />
                                     <Card.Text>
                                        <span className='fw-bold'>Cooking Method:</span> {cookingMethodThree}
