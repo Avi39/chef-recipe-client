@@ -7,7 +7,7 @@ const Dishes = () => {
 
     useEffect(
         ()=>{
-            fetch('http://localhost:5000/dishes')
+            fetch('https://assignment-ten-server-avi39.vercel.app/dishes')
             .then(res => res.json())
             .then(data => setDishes(data))
             .catch(error=>console.error(error))
