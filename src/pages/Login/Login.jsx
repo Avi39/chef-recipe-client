@@ -16,7 +16,6 @@ const provider = new GoogleAuthProvider();
     const {signIn,googleSingIn} = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
-
     const from = location.state?.from?.pathname || '/';
     console.log('login page location',location);
     const handleLogin = event =>{
