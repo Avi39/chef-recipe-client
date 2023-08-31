@@ -1,13 +1,14 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Col } from 'react-bootstrap';
 
 const Dishes = () => {
     const [dishes,setDishes] = useState([]);
 
     useEffect(
         ()=>{
-            fetch('https://assignment-ten-server-avi39.vercel.app/dishes')
+            fetch('http://localhost:5000/dishes')
             .then(res => res.json())
             .then(data => setDishes(data))
             .catch(error=>console.error(error))
@@ -15,10 +16,11 @@ const Dishes = () => {
     )
     return (
         <div>
-            <h2 className='ms-2 mb-4 text-danger'>All Popular Dishes</h2>
-            <div>
+            <h2 className='text-center mb-5 bg-dark p-3 text-white'>All Popular Dishes</h2>
+            <div className='row row-cols-4 text-center'>
                 {
                     dishes.map(dish =>
+                        <Col>
                         <Card className='mb-4' key={dish.id} style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={dish.picture} />
                         <Card.Body>
@@ -30,6 +32,7 @@ const Dishes = () => {
                           <Button variant="primary">See More</Button>
                         </Card.Body>
                       </Card>
+                      </Col>
                         )
                 }
            

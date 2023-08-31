@@ -45,7 +45,7 @@ const Main = () => {
                     <div className="col">
                     <Lottie animationData={animation2} loop={true}></Lottie>
                     </div>
-                    <div className="col">
+                    <div className="col mt-5">
                     <Lottie animationData={animation1} loop={true}></Lottie>
                     </div>
                     <div className="col">
@@ -55,14 +55,12 @@ const Main = () => {
             </div>
             <div className='mt-5'>
                 <Container>
-                    <Row>
-                        <Col lg={8}>
-                            <ChefNav></ChefNav>
-                        </Col>
-                        <Col lg={4}>
+                    <div>
+                    <ChefNav></ChefNav>
+                    </div>
+                        <div>
                             <Dishes></Dishes>
-                        </Col>
-                    </Row>
+                        </div>
                 </Container>
             </div>
             <div className='mt-5'>

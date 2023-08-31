@@ -1,13 +1,14 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Button, Card, CardGroup } from 'react-bootstrap';
+import { Button, Card, CardGroup, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ChefNav = ({recipe}) => {
     const [chefs,setChefs] = useState([]);
     useEffect(()=>{
-        fetch('https://assignment-ten-server-avi39.vercel.app/chefs')
+        fetch('http://localhost:5000/chefs')
         .then(res => res.json())
         .then(data => setChefs(data))
         .catch(error=>console.error(error))
@@ -16,11 +17,13 @@ const ChefNav = ({recipe}) => {
     return (
         <div>
             
-            <h2 className='ms-5 mb-4 text-success'>All CHEFS</h2>
-            <div>
+            <h2 className='text-center mb-5 bg-dark p-3 text-white'>All CHEFS WITH THEIR RECIPE</h2>
+            <div className='container text-center'>
+            <div className='row'>
             {
                 chefs.map(chef =>
-                    <Card className='mb-4' key={chef.id} style={{ width: '18rem' }}>
+                    <Col>
+                    <Card className='mb-5' key={chef.id} style={{ width: '18rem' }}>
       <Card.Img variant="top" src={chef.chefPicture} />
       <Card.Body>
         <Card.Title>Name:{chef.chefName}</Card.Title>
@@ -30,11 +33,14 @@ const ChefNav = ({recipe}) => {
         <Link to={`/recipes/${chef.id}`}><Button variant="primary">View Recipes</Button></Link> 
       </Card.Body>
     </Card>
+    </Col>
 
        )
             }
 
             </div>
+            </div>
+            
             
         </div>
     );
