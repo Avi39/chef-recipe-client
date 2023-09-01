@@ -20,7 +20,7 @@ import animation1 from '../assets/animation_llzirnh4.json'
 import animation2 from '../assets/animation_llzit5q5.json'
 import animation3 from '../assets/animation_llzivk47.json'
 import animation4 from '../assets/animation_llzlqidr.json'
-
+import animation5 from '../assets/animation_lm14mddg.json'
 
 const Main = () => {
     const [nonvegs, setNonveg] = useState([]);
@@ -35,11 +35,15 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <div className='d-flex mt-4 '>
-                <p className='fs-3 p-4 mt-5 fst-italic text-bold'>Put down the takeway menu and sample some proper Italian sunshine with a simple pasta sauce,<br></br> a homemade pizza or perhaps something a little more special. Easy enough for a midweek <br /> meal, many dishes can be cooked in minutes, while taking the time to make your own pasta could <br />
-                    really wow your guests at the weekend.</p>
-                <img className='rounded img-fluid w-50 p-4 ' src={pic} alt="" />
+            <div className='d-flex justify-content-center mt-5'>
+                <p className='fs-1 p-4 mt-5 fst-italic fw-semibold text-bold'><span className='text-danger fw-bold'>Put  down </span> the takeway <br /> some <span className='text-danger fw-bold'>proper Italian </span> sunshine with <br /> a <span className='text-danger fw-bold'>simple </span>pasta sauce,<br></br> a<span className='text-success fw-bold'> homemade</span>.</p>
+                <div>
+                <Lottie animationData={animation5} loop={true}></Lottie>
+                </div>
             </div>
+            
+          
+            
             <div className="container text-center">
                 <div className="row">
                     <div className="col">
@@ -202,7 +206,7 @@ const Main = () => {
 
             </div>
             <Footer></Footer>
-        </div>
+        </div >
     );
 };
 
