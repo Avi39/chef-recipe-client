@@ -29,7 +29,7 @@ const Main = () => {
     const formRef = useRef(null);
     useEffect(
         () => {
-            fetch('http://localhost:5000/nonveg')
+            fetch('https://assignment-ten-server-avi39.vercel.app/nonveg')
                 .then(res => res.json())
                 .then(data => setNonveg(data))
                 .catch(error => console.error(error))
