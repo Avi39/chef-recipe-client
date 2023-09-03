@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from '../pages/Shared/Header/Header';
 import Footer from '../pages/Shared/Footer/Footer';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import ChefNav from '../pages/Shared/ChefNav.jsx/ChefNav';
 import pic from '../assets/Recipe.jpg'
 import Dishes from '../pages/Shared/dishes/Dishes';
@@ -21,9 +21,12 @@ import animation2 from '../assets/animation_llzit5q5.json'
 import animation3 from '../assets/animation_llzivk47.json'
 import animation4 from '../assets/animation_llzlqidr.json'
 import animation5 from '../assets/animation_lm14mddg.json'
+import emailjs from '@emailjs/browser';
 
 const Main = () => {
     const [nonvegs, setNonveg] = useState([]);
+    const [validated, setValidated] = useState(false);
+    const formRef = useRef(null);
     useEffect(
         () => {
             fetch('http://localhost:5000/nonveg')
@@ -32,39 +35,59 @@ const Main = () => {
                 .catch(error => console.error(error))
         }, []
     )
+    const form = useRef();
+
+    const handleReset = () => {
+        formRef.current.reset();
+        setValidated(false);
+    };
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_tuyyd18', 'template_by0106q', form.current, 'pRvKGjQL9e8ysYewT')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+        setValidated(true);
+        handleReset();
+
+    };
     return (
         <div>
             <Header></Header>
             <div className='d-flex justify-content-center mt-5'>
                 <p className='fs-1 p-4 mt-5 fst-italic fw-semibold text-bold'><span className='text-danger fw-bold'>Put  down </span> the takeway <br /> some <span className='text-danger fw-bold'>proper Italian </span> sunshine with <br /> a <span className='text-danger fw-bold'>simple </span>pasta sauce,<br></br> a<span className='text-success fw-bold'> homemade</span>.</p>
                 <div>
-                <Lottie animationData={animation5} loop={true}></Lottie>
+                    <Lottie animationData={animation5} loop={true}></Lottie>
                 </div>
             </div>
-            
-          
-            
+
+
+
             <div className="container text-center">
                 <div className="row">
                     <div className="col">
-                    <Lottie animationData={animation2} loop={true}></Lottie>
+                        <Lottie animationData={animation2} loop={true}></Lottie>
                     </div>
                     <div className="col mt-5">
-                    <Lottie animationData={animation1} loop={true}></Lottie>
+                        <Lottie animationData={animation1} loop={true}></Lottie>
                     </div>
                     <div className="col">
-                    <Lottie animationData={animation4} loop={true}></Lottie>
+                        <Lottie animationData={animation4} loop={true}></Lottie>
                     </div>
                 </div>
             </div>
             <div className='mt-5'>
                 <Container>
                     <div>
-                    <ChefNav></ChefNav>
+                        <ChefNav></ChefNav>
                     </div>
-                        <div>
-                            <Dishes></Dishes>
-                        </div>
+                    <div>
+                        <Dishes></Dishes>
+                    </div>
                 </Container>
             </div>
             <div className='mt-5'>
@@ -203,8 +226,28 @@ const Main = () => {
                         }
                     </div>
                 </Container>
-
             </div>
+            <Container>
+                <div>
+                    <h2 className='text-center mt-5 text-danger bg-dark p-2 w-75 mx-auto mb-4'>Contact With Us</h2>
+                    <Form className='w-50 mx-auto' ref={form} validated={validated} onSubmit={sendEmail}>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label >Name</Form.Label>
+                            <Form.Control type="text" placeholder="your Name" name='from_name' />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" placeholder="your email" name='from_email' />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Text</Form.Label>
+                            <Form.Control as="textarea" rows={3} placeholder='what you want write on this' name='message' />
+                        </Form.Group>
+                        <input className="btn btn-primary" type='submit' value="submit" />
+                    </Form>
+
+                </div>
+            </Container>
             <Footer></Footer>
         </div >
     );
