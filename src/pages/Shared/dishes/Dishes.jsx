@@ -17,7 +17,7 @@ const Dishes = () => {
     return (
         <div>
             <h2 className='text-center mb-5 bg-dark p-3 text-white'>All Popular Dishes</h2>
-            <div className='row row-cols-4 text-center'>
+            <div className='row row-md-cols-4 text-center'>
                 {
                     dishes.map(dish =>
                         <Col>

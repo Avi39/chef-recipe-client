@@ -5,12 +5,23 @@ import ChefNav from '../Shared/ChefNav.jsx/ChefNav';
 import { Button, Card, Table } from 'react-bootstrap';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import Swal from 'sweetalert2';
 
 const Reciepes = () => {
     const [rating, setRating] = useState(0)
     const recipes = useLoaderData();
     const { id, chefPicture, chefName, yearsOfExperience, numRecipes, likes, recipeNameOne, cookingMethodOne, ratingOne, ingredientsOne, bio,recipeNameTwo,cookingMethodTwo,ratingTwo,ingredientsTwo,recipeNameThree,ratingThree,ingredientsThree,cookingMethodThree } = recipes;
     console.log(recipes);
+    const onFavorite = (event) =>{
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'The recipe is your favorite',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          event.currentTarget.disabled = true;
+    }
     return (
         <div>
             {
@@ -46,7 +57,7 @@ const Reciepes = () => {
                                     <Card.Text>
                                     <span className='fw-bold'>ingredients:</span> {ingredientsOne}
                                     </Card.Text>
-                                    <Button variant="success">Favourite</Button>
+                                    <Button onClick={onFavorite} variant="success">Favourite</Button>
                                 </Card.Body>
                             </Card>
                             <Card className='mb-4' border="dark" style={{ width: '18rem' }}>
@@ -62,7 +73,7 @@ const Reciepes = () => {
                                     <Card.Text>
                                     <span className='fw-bold'>ingredients:</span> {ingredientsTwo}
                                     </Card.Text>
-                                    <Button variant="success">Favourite</Button>
+                                    <Button onClick={onFavorite} variant="success">Favourite</Button>
                                 </Card.Body>
                             </Card>
                             <Card border="dark" style={{ width: '18rem' }}>
@@ -80,7 +91,7 @@ const Reciepes = () => {
                                     <Card.Text>
                                     <span className='fw-bold'>ingredients:</span> {ingredientsThree}
                                     </Card.Text>
-                                    <Button variant="success">Favourite</Button>
+                                    <Button onClick={onFavorite} variant="success">Favourite</Button>
                                 </Card.Body>
                             </Card>
                         </div>

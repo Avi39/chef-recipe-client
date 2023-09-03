@@ -58,7 +58,7 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <div className='d-flex justify-content-center mt-5'>
+            <div className='d-md-flex justify-content-center mt-5'>
                 <p className='fs-1 p-4 mt-5 fst-italic fw-semibold text-bold'><span className='text-danger fw-bold'>Put  down </span> the takeway <br /> some <span className='text-danger fw-bold'>proper Italian </span> sunshine with <br /> a <span className='text-danger fw-bold'>simple </span>pasta sauce,<br></br> a<span className='text-success fw-bold'> homemade</span>.</p>
                 <div>
                     <Lottie animationData={animation5} loop={true}></Lottie>
@@ -150,7 +150,7 @@ const Main = () => {
                 <Container>
                     <h2 className='text-center mb-4 bg-dark p-3 text-white'>Vegetarian Famous Recipe </h2>
                     <Row>
-                        <Col lg={3}>
+                        <Col lg={3} sm={1}>
                             <Card style={{ width: '18rem' }}>
                                 <Card.Img variant="top" src={spinach} />
                                 <Card.Body>
@@ -162,7 +162,7 @@ const Main = () => {
                                 </Card.Body>
                             </Card>
                         </Col>
-                        <Col lg={3}>
+                        <Col lg={3} sm={1}>
                             <Card className='mx-4' style={{ width: '18rem' }}>
                                 <Card.Img variant="top" src={chickpea2} />
                                 <Card.Body>
@@ -174,7 +174,7 @@ const Main = () => {
                                 </Card.Body>
                             </Card>
                         </Col>
-                        <Col lg={3}>
+                        <Col lg={3} sm={1}>
                             <Card className='mx-5' style={{ width: '15rem' }}>
                                 <Card.Img variant="top" src={caprese} />
                                 <Card.Body>
@@ -186,7 +186,7 @@ const Main = () => {
                                 </Card.Body>
                             </Card>
                         </Col>
-                        <Col lg={3}>
+                        <Col lg={3} sm={1}>
                             <Card className='mx-4' style={{ width: '18rem' }}>
                                 <Card.Img variant="top" src={stir} />
                                 <Card.Body>
@@ -205,7 +205,7 @@ const Main = () => {
             <div className='mt-5 '>
                 <Container>
                     <h2 className='text-center mb-4 bg-dark p-3 text-white'>Non Veg Famous Recipe </h2>
-                    <div className="row row-cols-4">
+                    <div className="row row-cols-md-4 text-center">
                         {
                             nonvegs.map(nonveg =>
 
